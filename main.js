@@ -13,6 +13,11 @@ function startGame()
 
 function preload() {
 	world_start = loadSound("world_start.wav");
+	mario_jump = loadSound("jump.wav");
+	mario_coin = loadSound("coin.wav");
+	mario_gameover = loadSound("gameover.wav");
+	mario_die = loadSound("mariodie.wav");
+	mario_kick = loadSound("kick.wav");
 	setSprites();
 	MarioAnimation();
 	img = loadImage("mario05.png")
@@ -50,3 +55,14 @@ function game()
 	moveEnvironment(mario);
 	drawSprites();
 }
+
+/* Movements of character */
+function jumping(character)
+{
+	if( (noseY < 200 && character.live) || (touchIsDown&&character.live) )
+	{
+		mario_jump.play();
+		character.velocity.y+=gameConfig.jump;
+	}
+}
+

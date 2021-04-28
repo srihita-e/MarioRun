@@ -368,6 +368,10 @@ function die(character){
     character.status="dead";
     character.changeAnimation('dead');
     character.velocity.y-=2;
+    if(character.liveNumber > 0)
+    {
+      mario_die.play();
+    }
 }
 
 // check character status and response to sprite and game status
@@ -379,6 +383,7 @@ function checkStatus(character){
   }
   if(character.live==false && character.liveNumber==0){
     gameConfig.status="gameover"
+    mario_gameover.play();
   }
 
 }
